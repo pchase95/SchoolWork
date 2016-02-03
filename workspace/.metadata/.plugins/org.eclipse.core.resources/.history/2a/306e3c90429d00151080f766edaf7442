@@ -1,0 +1,101 @@
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.IOException;
+
+@SuppressWarnings("serial")
+public class StaffMenu extends JPanel implements ActionListener
+{
+	private JFrame f;
+	private JButton add = new JButton("Add");
+	private JButton edit = new JButton("Edit");
+	private JButton delete = new JButton("Delete");
+	private JButton refresh = new JButton("Refresh");
+	private JSplitPane splitPane = new JSplitPane();
+	private JLabel label = new JLabel();
+	
+	String[]names;
+	private JList<Item> list;
+	
+	public StaffMenu()
+	{
+		f = new JFrame("Staff Menu");
+		f.setVisible(true);
+		f.setSize(1600, 900);
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		JPanel p = new JPanel();
+		p.setBackground(Main.bGroundColor);
+		BorderLayout blay = new BorderLayout();
+		p.setLayout(blay);
+		
+		GridLayout glay = new GridLayout(1, 4);
+		JPanel g = new JPanel();
+		g.setLayout(glay);
+		g.add(add);
+		g.add(edit);
+		g.add(delete);
+		g.add(refresh);
+		
+		list = new JList<>();
+		DefaultListModel<Item> model = new DefaultListModel<>();
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setModel(model);
+		for(int i = 0; i < Main.items.size(); i++)
+		{
+			model.addElement(Main.items.get(i));
+		}
+		JPanel splitPanel = new JPanel();
+
+		splitPane.setLeftComponent(new JScrollPane(list));
+		splitPanel.add(label);
+		splitPane.setRightComponent(splitPanel);
+		
+		list.getSelectionModel().addListSelectionListener(e -> {
+			Item i = list.getSelectedValue();
+			label.setText("Description: " + i.getDesc());
+
+				});
+		
+		p.add(splitPane, BorderLayout.CENTER);
+		p.add(g, BorderLayout.NORTH);
+		
+		add.addActionListener(this);
+		edit.addActionListener(this);
+		delete.addActionListener(this);
+		refresh.addActionListener(this);
+		
+		
+		f.add(p);
+	}
+
+	
+	public void actionPerformed(ActionEvent c)
+	{
+		if(c.getSource() == add)
+		{
+			new AddPane();
+		}
+		
+		if(c.getSource() == edit)
+		{
+			new EditPane(list.getSelectedIndex());
+		}
+		
+		if(c.getSource() == refresh)
+		{
+			try
+			{
+				Main.refreshList();
+				Main.readFile();
+				new StaffMenu();
+				f.dispose();
+			}
+			catch (IOException e)
+			{
+				System.out.println("File not found");
+			}
+		}
+	}
+}

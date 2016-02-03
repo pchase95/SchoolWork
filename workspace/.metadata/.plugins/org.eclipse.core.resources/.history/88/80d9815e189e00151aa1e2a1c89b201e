@@ -1,0 +1,29 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class RatePane extends JPanel implements ActionListener
+{
+	private JFrame f;
+	
+	public RatePane()
+	{
+		f = new JFrame("Leave a Rating");
+		f.setVisible(true);
+		f.setSize(400, 600);
+		
+		JPanel p = new JPanel()''
+		
+		
+		
+		
+		p.add(f);
+	}
+	
+	
+	
+	public void actionPerformed(ActionEvent h)
+	{
+		
+	}
+}

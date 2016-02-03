@@ -1,0 +1,34 @@
+import java.io.*;
+
+public class SolutionMain
+{
+	
+	public SolutionMain()
+	{
+		readFile();
+	}
+
+	public static void main(String[] args) 
+	{
+		new SolutionMain();
+	}
+	
+	
+	
+	public void readFile()
+	{
+	  String  thisLine = null;
+	  try
+	  {
+	         BufferedReader br = new BufferedReader("customers.txt");
+	         while ((thisLine = br.readLine()) != null)
+	         {
+	            System.out.println(thisLine);
+	         }       
+	      }
+	  catch(Exception e)
+	  {
+		  e.printStackTrace();
+	  }
+	}
+}

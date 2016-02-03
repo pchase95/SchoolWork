@@ -1,0 +1,127 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution
+{
+	// Heap used to sort customers based on priority number
+	private IHeap<Integer> heap = new Heap<Integer>();
+	
+	//ArrayList used to store all customers
+	private ArrayList<Customer> customers = new ArrayList<Customer>();
+	
+	public static void main(String[] args) 
+	{
+		Solution solution = new Solution();
+		solution.buildHeap();
+		solution.printWinners();
+	}
+
+	// adds all customers to heap
+	public void buildHeap() 
+	{
+		readFile();
+		for(Customer cust : customers)
+		{
+			heap.insert(cust.getPriority());
+		}		
+	}
+	
+	// Prints the 5 customers with highest priority to console
+	public void printWinners()
+	{
+		System.out.println("This year's 5 award winners are: \n\n");
+		for(int i = 0; i < 5; i++)
+		{
+			System.out.println(getWinner(heap.removeTop()));
+		}		
+	}
+	
+	 // reads 'customers.txt' and stores info on each customer in an object called 'Customer'
+	 // These customers are stored in an ArrayList called 'customers'
+	public void readFile()
+	{
+	  String line = "";
+	  try
+	  {
+         @SuppressWarnings("resource")
+         Scanner sr = new Scanner(new File("customers.txt"));
+         while (sr.hasNextLine())
+         {
+        	 line = sr.nextLine();
+        	 String[] part = line.split(", ");
+        	 //Customer cust = new Customer(part[0], Integer.parseInt(part[1]), Integer.parseInt(part[2]), Integer.parseInt(part[3]));
+        	 //customers.add(cust);
+        	 customers.add(new Customer(part[0], Integer.parseInt(part[1]), Integer.parseInt(part[2]), Integer.parseInt(part[3])));
+         }       
+      }
+	  
+	  catch(Exception e)
+	  {
+		  e.printStackTrace();
+	  }
+	}
+	
+	// matches up customer with their priority number then returns that customer
+	public Customer getWinner(Integer n)
+	{
+		Customer winner = null;
+		for(Customer cust : customers)
+		{
+			if(n == cust.getPriority())
+				winner = cust;
+		}
+		return winner;
+	}
+	
+	
+	// Object with info for each Customer.  All customers are stored in the ArrayList 'customers'
+	private class Customer
+	{
+		String name;
+		Integer money;
+		Integer years;
+		Integer order;
+		Integer priority;
+		
+		private Customer(String a, Integer b, Integer c, Integer d)
+		{
+			name = a;
+			money = b;
+			years = c;
+			order = d;
+			priority = (money / 1000) + years - order;
+		}
+		
+		public void setName(String s)
+		{
+			name = s;
+		}
+		public void setMoney(Integer n)
+		{
+			money = n;
+		}
+		public void setYears(Integer n)
+		{
+			years = n;
+		}
+		public void setOrder(Integer n)
+		{
+			order = n;
+		}
+
+		public Integer getPriority()
+		{
+			return priority;
+		}
+		
+		//How each Customer object is printed as
+		public String toString()
+		{
+			return "Customer: " + name + "\nPriority Number: " + priority + "\n";
+		}
+	}
+}
+
+
+
+

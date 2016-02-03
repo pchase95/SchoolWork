@@ -1,0 +1,23 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class EditPane
+{
+	private Item item = new Item(null, null);
+	private JFrame f;
+	private JTextField nameArea = new JTextField("");
+	private JLabel nameLabel = new JLabel("Name");
+	
+	private JTextArea descArea = new JTextArea("");
+	private JLabel descLabel = new JLabel("Description");
+	private JScrollPane scroll = new JScrollPane(descArea);
+	private JButton save = new JButton("Save");
+	
+	private String newName;
+	private String newDesc;
+	public EditPane(int n)
+	{
+		
+	}
+}

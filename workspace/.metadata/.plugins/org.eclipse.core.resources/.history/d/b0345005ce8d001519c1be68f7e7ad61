@@ -1,0 +1,29 @@
+import javax.swing.*;f
+import java.awt.event.*;
+import java.awt.*;
+
+public class Shreck extends JPanel
+{
+	private JFrame f;
+	private JPanel p;
+	
+	public Shreck()
+	{
+		f = new JFrame("I Love Shreck");
+		f.setVisible(true);
+		f.setSize(600, 400);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		p = new JPanel();
+		p.setBackground(Color.white);
+	}
+	
+	public static void main(String[] args)
+	{
+		
+		
+		
+	}
+	
+	
+}

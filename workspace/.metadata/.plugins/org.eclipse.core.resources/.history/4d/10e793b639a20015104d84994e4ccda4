@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.*;
+
+public class SolutionMain
+{
+	
+	public SolutionMain()
+	{
+		readFile();
+	}
+
+	public static void main(String[] args) 
+	{
+		new SolutionMain();
+	}
+	
+	
+	
+	public void readFile()
+	{
+	  String line = null;
+	  try
+	  {
+	         BufferedReader br = new BufferedReader(new FileReader("customers.txt"));
+	         while ((line = br.readLine()) != null)
+	         {
+	            System.out.println(line);
+	         }       
+	      }
+	  catch(Exception e)
+	  {
+		  e.printStackTrace();
+	  }
+	}
+}
+
+class customer
+{
+	String name;
+	int money;
+	int years;
+	int order;
+	
+	private customer(String a, int b, int c, int d)
+	{
+		name = a;
+		money = b;
+		years = c;
+		order = d;
+	}
+}
+
+

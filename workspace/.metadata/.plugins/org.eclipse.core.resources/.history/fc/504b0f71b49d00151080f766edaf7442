@@ -1,0 +1,76 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+@SuppressWarnings("serial")
+public class MainMenu extends JPanel implements ActionListener
+{
+	private JFrame f;
+	private JRadioButton date = new JRadioButton("Date");
+	private JRadioButton name = new JRadioButton("Name");
+	private JRadioButton rating = new JRadioButton("Rating");
+	private JRadioButton price = new JRadioButton("Price");
+	private JSplitPane splitPane = new JSplitPane();
+	private JLabel label = new JLabel();
+	private String[]names;
+	private JList<Item> list;
+	
+	
+	public MainMenu()
+	{
+		f = new JFrame("Main Menu");
+		f.setVisible(true);
+		f.setSize(1600, 900);
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		JPanel p = new JPanel();
+		p.setBackground(Main.bGroundColor);
+		BorderLayout blay = new BorderLayout();
+		p.setLayout(blay);
+		
+		GridLayout glay = new GridLayout(1, 4);
+		JPanel g = new JPanel();
+		g.setLayout(glay);
+		
+		g.add(name);
+		g.add(date);
+		g.add(rating);
+		g.add(price);
+		name.addActionListener(this);
+		date.addActionListener(this);
+		rating.addActionListener(this);
+		price.addActionListener(this);
+
+		list = new JList<>();
+		DefaultListModel<Item> model = new DefaultListModel<>();
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setModel(model);
+		for(int i = 0; i < Main.items.size(); i++)
+		{
+			model.addElement(Main.items.get(i));
+		}
+		JPanel splitPanel = new JPanel();
+		
+		JPanel splitPanel = new JPanel();
+
+		splitPane.setLeftComponent(new JScrollPane(list));
+		splitPanel.add(label);
+		splitPane.setRightComponent(splitPanel);
+		
+		list.getSelectionModel().addListSelectionListener(e -> {
+			Item i = list.getSelectedValue();
+			label.setText("Description: " + i.getDesc());
+				});
+		
+		p.add(g, BorderLayout.NORTH);
+		
+		f.add(p);
+	}
+	
+	
+	public void actionPerformed(ActionEvent f)
+	{
+		
+		
+	}
+}

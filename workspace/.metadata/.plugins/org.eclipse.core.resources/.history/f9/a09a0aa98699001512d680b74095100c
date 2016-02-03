@@ -1,0 +1,143 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class Calculator extends JPanel implements ActionListener
+{
+	private JFrame f;
+	
+	private JButton b1 = new JButton("1");
+	private JButton b2 = new JButton("2");
+	private JButton b3 = new JButton("3");
+	private JButton b4 = new JButton("4");
+	private JButton b5 = new JButton("5");
+	private JButton b6 = new JButton("6");
+	private JButton b7 = new JButton("7");
+	private JButton b8 = new JButton("8");
+	private JButton b9 = new JButton("9");
+	
+	private JButton add = new JButton("+");
+	private JButton sub = new JButton("-");
+	private JButton mult = new JButton("x");
+	private JButton div = new JButton("÷");
+	
+	private JButton equal = new JButton("=");
+	private Font font = new Font("Calibri", Font.PLAIN, 40);
+	
+	private String nums;
+	private JTextField hud = new JTextField(nums);
+	
+	
+	public Calculator()
+	{
+		JPanel p = new JPanel();
+		f = new JFrame("Snazzy Calc");
+		f.setSize(550, 650);
+		f.setVisible(true);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+
+		BorderLayout layout = new BorderLayout();
+		p.setLayout(layout);
+		
+		GridLayout glay = new GridLayout(3, 3);
+		JPanel g = new JPanel();
+		GridLayout glay2 = new GridLayout(2, 2);
+		JPanel g2 = new JPanel();		
+		
+		g.setLayout(glay);	
+		g.add(b1);
+		g.add(b2);
+		g.add(b3);
+		g.add(b4);
+		g.add(b5);
+		g.add(b6);
+		g.add(b7);
+		g.add(b8);
+		g.add(b9);
+		
+		
+		g2.setLayout(glay2);
+		g2.add(add);
+		g2.add(sub);
+		g2.add(div);
+		g2.add(mult);
+		g2.setPreferredSize(new Dimension(200, 200));
+		
+		hud.setPreferredSize(new Dimension(200, 50));
+		hud.setEditable(false);
+		hud.setFont(font);
+		hud.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		equal.setPreferredSize(new Dimension(200, 100));
+		
+		p.add(g, BorderLayout.CENTER);
+		p.add(hud, BorderLayout.NORTH);
+		p.add(g2, BorderLayout.EAST);
+		p.add(equal, BorderLayout.SOUTH);
+		
+		f.add(p);
+		
+		
+		b1.addActionListener(this);
+		b2.addActionListener(this);
+		b3.addActionListener(this);
+		b4.addActionListener(this);
+		b5.addActionListener(this);
+		b6.addActionListener(this);
+		b7.addActionListener(this);
+		b8.addActionListener(this);
+		b9.addActionListener(this);
+		add.addActionListener(this);
+		sub.addActionListener(this);
+		mult.addActionListener(this);
+		div.addActionListener(this);
+		equal.addActionListener(this);
+		hud.addActionListener(this);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		if(e.getSource() == b1)
+		{
+			nums += "1";
+		}
+		if(e.getSource() == b2)
+		{
+			nums += "2";
+		}
+		if(e.getSource() == b3)
+		{
+			nums += "3";
+		}
+		if(e.getSource() == b4)
+		{
+			nums += "4";
+		}
+		if(e.getSource() == b5)
+		{
+			nums += "5";
+		}
+		if(e.getSource() == b6)
+		{
+			nums += "6";
+		}
+		if(e.getSource() == b7)
+		{
+			nums += "7";
+		}
+		if(e.getSource() == b8)
+		{
+			nums += "8";
+		}
+		if(e.getSource() == b9)
+		{
+			nums += "9";
+		}
+	}
+}

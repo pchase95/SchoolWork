@@ -1,0 +1,45 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class GUI extends JPanel
+{
+	private JFrame f;
+	private JPanel p = new JPanel();;
+	private JButton add = new JButton("Add");
+	private JButton remove = new JButton("Remove");
+	private JButton view = new JButton("View");
+	private JTextField tField = new JTextField("What would you like to do?");
+	
+	public GUI()
+	{
+		BorderLayout layout = new BorderLayout();
+		GridLayout glay = new GridLayout(1, 2);
+		JPanel grid = new JPanel();
+		grid.setLayout(glay);
+		
+		p.setLayout(layout);
+		
+		f = new JFrame("StuffStore");
+		f.setVisible(true);
+		f.setSize(600, 400);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		f.add(p);
+		p.setBackground(Color.WHITE);
+		
+		
+		grid.add(add);
+		grid.add(remove);
+		grid.add(view);
+		
+		tField.setColumns(15);
+		tField.setEditable(false);
+		p.add(grid, BorderLayout.NORTH);
+		p.add(tField, BorderLayout.SOUTH);
+	}
+	
+	
+	
+}
+

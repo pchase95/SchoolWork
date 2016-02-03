@@ -1,0 +1,40 @@
+
+public class Item
+{
+	private String name;
+	private String desc;
+	private int rating;
+	private int orders;
+
+	
+	public Item(String name, String desc)
+	{
+		name = this.name;
+		desc = this.desc;
+	}
+	
+	
+	public void setName(String s)
+	{
+		name = s;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	
+	public void setDesc(String s)
+	{
+		desc = s;
+	}
+	public String getDesc()
+	{
+		return desc;
+	}
+	
+	//Override
+	public String toString()
+	{
+		return name;
+	}
+}

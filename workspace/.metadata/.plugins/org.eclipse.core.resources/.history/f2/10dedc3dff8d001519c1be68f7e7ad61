@@ -1,0 +1,22 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class ColorToggle extends JPanel implements ActionListener
+{
+	
+	public ColorToggle()
+	{
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		new ColorToggle();
+	}
+
+	public void actionPerformed(ActionEvent e)
+	{
+		
+	}
+}

@@ -1,0 +1,19 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event*;
+
+public class TextCopier
+{
+
+	public TextCopier()
+	{
+		
+		
+	}
+	
+	public static void main(String[] args)
+	{
+
+	}
+
+}

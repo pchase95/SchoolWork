@@ -1,0 +1,73 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+
+public class Main
+{
+	public static Color bGroundColor = new Color(218, 251, 255);
+	public static Font font = new Font("Calibri", Font.PLAIN, 35);
+	public static ArrayList<Item> items = new ArrayList<Item>();
+	public static String userName = System.getProperty("user.name");
+	public static String fileName = "C:\\Users\\" + userName + "\\Documents\\eMenu/Entries.txt";
+	public static String pathName = "C:\\Users\\" + userName + "\\Documents\\eMenu/";
+	public static File file = new File(fileName);
+	private static Item item;
+
+	
+	public static void main(String[] args)
+	{
+		new LoginMenu();
+		
+	}
+	
+	public static void refreshList()
+	{
+		items = new ArrayList<Item>();
+	}
+
+	public static void WriteFile()
+	{
+		try
+		{
+			PrintWriter printFile = new PrintWriter(Main.file);
+			for(int i = 0; i < Main.items.size(); i++)
+			{
+				printFile.println(Main.items.get(i).getName() + "; " + Main.items.get(i).getDesc() + "; " + 
+				Main.items.get(i).getPrice() + "; " + Main.items.get(i).getRating()/* + Main.items.get(i).getItemImage()*/);
+			}
+			printFile.close();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}		
+	}	
+	
+	public static void readFile() throws IOException
+	{
+		//itemQuant = 0;
+		String line = "";
+		if(file.exists())
+		{
+			@SuppressWarnings("resource")
+			Scanner reader = new Scanner(file);
+			while(reader.hasNextLine())
+			{
+				line = reader.nextLine();
+				String[] part = line.split("; ");
+				item = new Item(null, null, null);
+				item.setName(part[0]);
+				item.setDesc(part[1]);
+				item.setPrice(part[2]);
+				item.setRating(Integer.parseInt(part[3]));
+				//item.setItemImage(part[4]);
+				items.add(item);
+			}
+		}
+	}
+}

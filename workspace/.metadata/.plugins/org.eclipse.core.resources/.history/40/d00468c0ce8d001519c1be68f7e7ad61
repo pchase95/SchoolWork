@@ -1,0 +1,33 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class Shreck extends JPanel implements ActionListener
+{
+	private JFrame f;
+	private JPanel p;
+	private JButton but;
+	private boolean bool;
+	
+	public Shreck()
+	{
+		f = new JFrame("I Love Shreck");
+		f.setVisible(true);
+		f.setSize(600, 400);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		p = new JPanel();
+		p.setBackground(Color.white);
+	}
+	
+	public static void main(String[] args)
+	{
+		new Shreck();
+	}
+	
+	
+	public void actionPerformerd(ActionEvent e)
+	{
+		
+	}
+}

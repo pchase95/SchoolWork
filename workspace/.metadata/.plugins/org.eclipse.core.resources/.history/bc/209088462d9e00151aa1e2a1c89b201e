@@ -1,0 +1,20 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class ExitPane extends JPanel implements ActionListener
+{
+	
+	private JFrame f;
+	
+	public ExitPane()
+	{
+		f = new JFrame("Thank You");
+		f.setSize(400, 300);
+	}
+	
+	public void actionPerformed(ActionEvent j)
+	{
+		
+	}
+}

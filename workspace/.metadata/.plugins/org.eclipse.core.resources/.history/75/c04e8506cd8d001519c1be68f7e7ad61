@@ -1,0 +1,47 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class Shreck extends JPanel implements ActionListener
+{
+	private JButton button;
+	private JFrame f;
+	private JPanel p;
+	private boolean toggle = true;
+	
+	public Shreck()
+	{
+		f = new JFrame();
+		f.setSize(400, 400);
+		f.setVisible(true);
+		f.add(this);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		p = new JPanel();
+		
+		
+		FlowLayout layout = new FlowLayout();
+		setLayout(layout);
+		setBackground(Color.black);
+		button = new JButton("Toggle Color");
+		button.addActionListener(this);
+		p.add(button);
+	}
+	
+	public static void main(String[] args)
+	{
+		new Shreck();
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		if(e.getSource() == button)
+		{
+			if(toggle)
+				setBackground(Color.white);
+			else
+				setBackground(Color.black);
+		}
+		toggle = !toggle;
+	}
+}

@@ -1,0 +1,87 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@SuppressWarnings("serial")
+public class AddPane extends JPanel implements ActionListener
+{
+	private Item item = new Item(null, null);
+	private JFrame f;
+	private JTextField nameArea = new JTextField("");
+	private JLabel nameLabel = new JLabel("Name");
+	
+	private JTextArea descArea = new JTextArea("");
+	private JLabel descLabel = new JLabel("Description");
+	private JScrollPane scroll = new JScrollPane(descArea);
+	private JButton save = new JButton("Save");
+	
+	private String newName;
+	private String newDesc;
+	
+	
+	public AddPane()
+	{
+		f = new JFrame("Add");
+		f.setVisible(true);
+		f.setSize(600, 600);
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		JPanel p = new JPanel();
+		FlowLayout flay = new FlowLayout();
+		p.setLayout(flay);
+		p.setBackground(Main.bGroundColor);
+		
+		p.add(nameLabel);
+		p.add(nameArea);
+		nameArea.setPreferredSize(new Dimension(550, 50));
+		nameArea.setColumns(50);
+		
+		p.add(descLabel);
+		p.add(scroll);
+		descArea.setColumns(50);
+		descArea.setRows(20);
+		descArea.getLineWrap();
+		
+		p.add(save);
+		save.addActionListener(this);
+		
+		f.add(p);
+	}
+	
+	private void setNewName(String s)
+	{
+		newName = s;
+	}
+	private String getNewName()
+	{
+		return newName;
+	}
+	
+	private void setNewDesc(String s)
+	{
+		newDesc = s;
+	}
+	private String getNewDesc()
+	{
+		return newDesc;
+	}
+	
+	public void actionPerformed(ActionEvent d)
+	{
+		if(d.getSource() == save)
+		{
+			setNewName(nameArea.getText());
+			setNewDesc(descArea.getText());
+			item.setName(getNewName());
+			item.setDesc(getNewDesc());
+			Main.items.add(item);
+			Main.WriteFile();
+			f.dispose();
+			Main.refresh();
+		}
+	}
+
+
+}

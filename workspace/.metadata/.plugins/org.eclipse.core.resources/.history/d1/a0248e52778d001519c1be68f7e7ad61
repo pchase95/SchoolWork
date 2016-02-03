@@ -1,0 +1,19 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class Shreck
+{
+	private JButton button;
+	private boolean toggle = true;
+	
+	public Shreck()
+	{
+		FlowLayout layout = new FlowLayout();
+		setLayout(layout);
+		setBackground(Color.black);
+		
+		button = new JButton("Toggle Color");
+	}
+
+}

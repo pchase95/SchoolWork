@@ -1,0 +1,54 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class TextCopier extends JPanel implements ActionListener
+{
+	private JTextField textField = new JTextField();
+	private JButton copyButton = new JButton("Copy");
+	private JRadioButton radioNormal = new JRadioButton("Normal");
+	private JRadioButton radioUpper = new JRadioButton("Upper Case");
+	private JRadioButton radioLower = new JRadioButton("Lower Case");
+	private JTextArea textArea = new JTextArea();
+	
+	
+	public TextCopier()
+	{
+		BorderLayout layout = new BorderLayout();
+		setLayout(layout);
+		setBackground(Color.black);
+		
+		JScrollPane pane = new JScrollPane(textArea);
+		textArea.setColumns(40);
+		textArea.setRows(5);
+		textArea.setLineWrap(true);
+		add(pane, BorderLayout.SOUTH);
+		
+		textField.setColumns(40);
+		add(textField, BorderLayout.NORTH);
+		
+		GridLayout gridLayout = new GridLayout(3, 0);
+		JPanel grid = new JPanel();
+		grid.setLayout(gridLayout);
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(radioNormal);
+		grid.add(radioNormal);
+		group.add(radioLower);
+		grid.add(radioLower);
+	}
+	
+	
+	
+	public static void main(String[] args)
+	{
+		
+	}
+	
+	
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		
+	}
+}

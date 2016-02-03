@@ -1,0 +1,166 @@
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.util.List;
+import java.util.Comparator;
+
+
+
+public class SearchPanel extends JPanel
+{
+	private JTextField searchBox = new JTextField();
+	private ArrayList<Person> a1 = new ArrayList<>();
+	private ArrayList<JButton> bl = new ArrayList<>();
+	private String[] sortStrings = {"Name", "Age", "Address"};
+	private JComboBox<String> sortList = new JComboBox<String>(sortStrings);
+	private enum SortMethod { NAME, AGE, ADDRESS};
+	private SortMethod sortMethod;
+
+	public SearchPanel()
+	{
+		sortMethod = SortMethod.NAME;
+		sortList.setEditable(false);
+		sortList.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				String selection = (String)sortList.getSelectedItem();
+				if(selection == "Name")
+				{
+					sortMethod = SortMethod.NAME;
+				} else if(selection == "Age")
+				{
+					sortMethod = SortMethod.AGE;
+				} else if(selection == "Address")
+				{
+					sortMethod = SortMethod.ADDRESS;
+				}
+				searchAndDisplay();
+			}
+		});
+
+		searchBox.setText("");
+		searchBox.setColumns(15);
+
+		searchBox.addKeyListener(new KeyAdapter()
+		{
+			public void keyReleased(KeyEvent e)
+			{
+				if(e.getKeyCode() == KeyEvent.VK_SHIFT)
+				{
+					return;
+				}
+
+				if(!(e.getKeyChar() == 27 || e.getKeyChar() == 65535))
+				{
+					searchAndDisplay();
+				}
+
+			}
+		});
+		add(searchBox);
+		add(sortList);
+		fillList();
+
+		//Collections.sort(al, new PersonNameComparator());
+		Collections.sort(al, Comparator.comparing(Person::getName));
+		//Collections.sort(al, Comparator.comparing(Person::getAge));
+		for(Person per : al)
+		{
+			JButton temp = new JButton(per.getName());
+			temp.setPreferredSize(new Dimension(160, 20));
+			bl.add(temp);
+			add(temp);
+		}
+		//validate();
+		//repaint();
+	}
+
+	public void searchAndDisplay()
+	{
+		for(JButton b : bl)
+		{
+			remove(b);
+			b = null;
+		}
+	    bl.clear();
+
+		List<Person> results = searchIn(al, new Matcher<Person>(){
+			public boolean matches(Person p)
+			{
+				//System.out.println(p.getName());
+				return p.getName().toUpperCase().contains(searchBox.getText().toUpperCase());
+			}
+		});
+		//if(sortMethod == SortMethod.NAME)
+		//	Collections.sort(results, new PersonNameComparator());
+		//else if(sortMethod == SortMethod.AGE)
+		//	Collections.sort(results, Comparator.comparing(Person::getAge));
+		//else if(sortMethod == SortMethod.ADDRESS)
+		//	Collections.sort(results, Comparator.comparing(Person::getAddress));
+		for(Person p : results)
+		{
+			JButton temp = new JButton(p.getName());
+			temp.setPreferredSize(new Dimension(160, 20));
+			bl.add(temp);
+			add(temp);
+			//add(new JButton(p.getName()));
+		}
+		revalidate();
+		repaint();
+	}
+
+	private void fillList()
+	{
+		for(int i = 0; i < Main.People.size(); i++)
+			al.add(Main.People.get(i));
+	}
+
+	//public void sortList(boolean reverse)
+	//{
+		//searchBox.dispatchEvent(new KeyEvent(searchBox, KeyEvent.KEY_TYPED, 0, 0, ' ' ));
+		/*try{
+			Robot robot = new Robot();
+			robot.keyPress(KeyEvent.VK_ENTER);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}*/
+	//}
+
+
+
+	public static <T> List<T> searchIn(List<T> list, Matcher<T> m)
+	{
+		List<T> r = new ArrayList<T>();
+		for(T t : list)
+		{
+			if(m.matches(t))
+			{
+				r.add(t);
+			}
+		}
+		return r;
+	}
+
+	public static void main(String ... args)
+	{
+		JFrame f = new JFrame();
+		f.setVisible(true);
+
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.add(new SearchPanel());
+		f.pack();
+		f.setSize(200, 600);
+
+		Person p = new Person();
+		p.setPhone("2352352");
+	}
+
+}
+
+interface Matcher<T>
+{
+	public boolean matches(T t);
+}

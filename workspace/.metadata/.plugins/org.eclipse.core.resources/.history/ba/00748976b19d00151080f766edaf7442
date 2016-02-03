@@ -1,0 +1,36 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+@SuppressWarnings("serial")
+public class MainMenu extends JPanel implements ActionListener
+{
+	private JFrame f;
+	private JRadioButton date = new JRadioButton("Date");
+	private JRadioButton name = new JRadioButton("Name");
+	private JRadioButton rating = new JRadioButton("Rating");
+	private JRadioButton price = new JRadioButton("Price");
+	
+	
+	public MainMenu()
+	{
+		f = new JFrame("Main Menu");
+		f.setVisible(true);
+		f.setSize(1600, 900);
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		JPanel p = new JPanel();
+		p.setBackground(Main.bGroundColor);
+		BorderLayout blay = new BorderLayout();
+		p.setLayout(blay);
+		
+		f.add(p);
+	}
+	
+	
+	public void actionPerformed(ActionEvent f)
+	{
+		
+		
+	}
+}

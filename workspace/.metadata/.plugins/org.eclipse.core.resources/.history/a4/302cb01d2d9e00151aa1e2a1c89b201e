@@ -1,0 +1,14 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class ExitPane
+{
+	
+	private JFrame f;
+	
+	public ExitPane()
+	{
+		
+	}
+}

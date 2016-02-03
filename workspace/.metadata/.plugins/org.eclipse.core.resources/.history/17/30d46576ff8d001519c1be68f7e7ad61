@@ -1,0 +1,31 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class ColorToggle extends JPanel implements ActionListener
+{
+	private JComboBox combo = new JComboBox();
+	
+	public ColorToggle()
+	{
+		combo.addItem("Red");
+		combo.addItem("Green");
+		combo.addItem("Blue");
+		combo.addActionListener(this);
+		
+		FlowLayout layout = new FlowLayout();
+		setLayout(layout);
+		add(combo);
+		setBackground(Color.black);
+	}
+	
+	public static void main(String[] args)
+	{
+		new ColorToggle();
+	}
+
+	public void actionPerformed(ActionEvent e)
+	{
+		
+	}
+}

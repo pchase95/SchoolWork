@@ -1,0 +1,23 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+@SuppressWarnings("serial")
+public class MainMenu extends JPanel
+{
+	private JFrame f;
+	
+	
+	public MainMenu()
+	{
+		f = new JFrame("Main Menu");
+		f.setVisible(true);
+		f.setSize(1600, 900);
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		JPanel p = new JPanel();
+		p.setBackground(Main.bGroundColor);
+		
+		f.add(p);
+	}
+}

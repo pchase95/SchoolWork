@@ -1,0 +1,26 @@
+
+
+
+
+
+public class TestPerson
+{
+	public static void main(String[] args)
+	{
+		Person person = new Person();
+		person.setAge(15);
+		person.setGender(Gender.MALE); // One way
+		Gender my_gender = Gender.MALE;
+		person.setGender(my_gender);   // Another way
+		person.setAddress("101 MCLA Ave");
+
+		System.out.print("Address: ");
+		System.out.println(person.getAddress());
+		System.out.print("Age:     ");
+		System.out.println(person.getAge());
+		System.out.print("Gender:  ");
+		System.out.println(person.getGender());
+
+
+	}
+}

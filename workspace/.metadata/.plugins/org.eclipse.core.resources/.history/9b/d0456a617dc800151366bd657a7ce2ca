@@ -1,0 +1,72 @@
+//Here's the class for a tabbed JPanel displaying various details.
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Tab extends JPanel
+{
+    //the tabs containing contact info and personal info, respectively    
+    private JPanel conTab = new JPanel(); 
+    private JPanel perTab= new JPanel();
+    //layouts for the contact info and personal info tabs
+    private GridLayout conLayout = new GridLayout(4, 2);
+    private GridLayout perLayout = new GridLayout(3, 2);
+    private JTabbedPane tabbedPane = new JTabbedPane();        
+    private JLabel phone,email, address, website, gender, age, comment, phoneLabel, eLabel, addressLabel,
+            webLabel, genderLabel,ageLabel,commentLabel;    
+
+
+    public Tab(){}
+    
+    public Tab(Person per)
+    {        
+        conTab.setLayout(conLayout);
+        perTab.setLayout(perLayout);
+
+        tabbedPane.add("Contact", conTab);
+        tabbedPane.add("Personal", perTab);
+        
+        add(tabbedPane);
+    }    
+    public void actionPerformed(ActionEvent a)
+    {
+        if(a.getSource()==conTab)
+        {
+             phoneLabel= new JLabel("Phone:");
+            eLabel= new JLabel("Email:");
+            addressLabel= new JLabel("Address:");
+            webLabel= new JLabel("Website:");
+        
+            phone=new JLabel(per.getPhone());
+            email=new JLabel(per.getEmail());
+            address=new JLabel (per.getAddress());
+            website = new JLabel (per.getWebsite());        
+            
+            conTab.add(phoneLabel);
+            conTab.add(phone);
+            conTab.add(eLabel);
+            conTab.add(email);
+            conTab.add(addressLabel);
+            conTab.add(address);
+            conTab.add(webLabel);
+            conTab.add(website);
+        }
+        if(a.getSource()==perTab)
+        {
+            genderLabel= new JLabel("Gender:");
+            ageLabel= new JLabel("Age:");
+            commentLabel = new JLabel("Comment:");
+            genderLabel= new JLabel("Gender:");
+            ageLabel= new JLabel("Age:");
+            commentLabel = new JLabel("Comment:");
+            
+            perTab.add(genderLabel);
+            perTab.add(gender);
+            perTab.add(ageLabel);
+            perTab.add(age);
+            perTab.add(commentLabel);                 
+            perTab.add(comment);
+        }
+    }
+}

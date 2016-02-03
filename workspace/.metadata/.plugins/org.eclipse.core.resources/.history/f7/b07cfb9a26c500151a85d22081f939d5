@@ -1,0 +1,92 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class AddCustomer extends JPanel implements ActionListener
+{
+	private JFrame f;
+	private JPanel p;
+	private JButton save_button = new JButton("Save");
+	
+	private JLabel name_label = new JLabel("Name");
+	private JLabel phone_label = new JLabel("Phone");
+	private JLabel email_label = new JLabel("Email");
+	private JLabel address_label = new JLabel("Address");
+	private JLabel website_label = new JLabel("Website");
+	private JLabel work_label = new JLabel("Work");
+	private JLabel comment_label = new JLabel("Comment");
+	private JLabel gender_label = new JLabel("Gender");
+	private JLabel age_label = new JLabel("Age");
+	private JTextField name_field = new JTextField();
+	private JTextField phone_field = new JTextField();
+	private JTextField email_field = new JTextField();
+	private JTextField address_field = new JTextField();
+	private JTextField website_field = new JTextField();
+	private JTextField work_field = new JTextField();
+	private JTextArea comment_field = new JTextArea();
+	private JRadioButton male_button = new JRadioButton("Male");
+	private JRadioButton female_button = new JRadioButton("Female");
+	private ButtonGroup genders = new ButtonGroup();
+	private JTextField age_field = new JTextField();
+	
+	public AddCustomer()
+	{
+		try
+		{
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		f = new JFrame("Add Customer");
+		f.setSize(400, 600);
+		f.setVisible(true);
+		
+		p = new JPanel();
+		p.setBackground(Main.bkgr_color);
+		GridLayout glay = new GridLayout(0, 1);
+		p.setLayout(glay);
+		
+		p.add(name_label);
+		p.add(name_field);
+		p.add(gender_label);
+		p.add(male_button);
+		p.add(female_button);
+		p.add(age_label);
+		p.add(age_field);
+		p.add(phone_label);
+		p.add(phone_field);
+		p.add(email_label);
+		p.add(email_field);
+		p.add(address_label);
+		p.add(address_field);
+		p.add(website_label);
+		p.add(website_field);
+		p.add(work_label);
+		p.add(work_field);
+		p.add(comment_label);
+		p.add(comment_field);
+		genders.add(male_button);
+		genders.add(female_button);
+		male_button.setSelected(true);
+		
+		f.add(p);
+	}
+	
+	
+	public void actionPerformed(ActionEvent b)
+	{
+		if(b.getSource() == save_button)
+		{
+			Person person = new Person();
+			person.setName(name_field.getText());
+			if(male_button.isSelected())
+				person.setGender(Gender.MALE);
+			
+			f.dispose();
+		}
+	}
+	
+	
+}

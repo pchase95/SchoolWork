@@ -1,0 +1,54 @@
+import java.io.*;
+import java.util.*;
+
+public class SolutionMain
+{
+	
+	public SolutionMain()
+	{
+		readFile();
+	}
+
+	public static void main(String[] args) 
+	{
+		new SolutionMain();
+	}
+	
+	
+	
+	public void readFile()
+	{
+	  String line = "";
+	  try
+	  {
+	         Scanner sr = new Scanner(new File("customers.txt"));
+	         while (sr.hasNextLine())
+	         {
+	        	 line = sr.nextLine();
+	        	 String[] part = line.split(", ");
+	         }       
+	      }
+	  catch(Exception e)
+	  {
+		  System.out.println("File not found");
+	  }
+	}
+}
+
+class customer
+{
+	String name;
+	int money;
+	int years;
+	int order;
+	
+	private customer(String name, int money, int years, int order)
+	{
+		name = this.name;
+		money = this.money;
+		years = this.years;
+		order = this.order;
+	}
+}
+
+

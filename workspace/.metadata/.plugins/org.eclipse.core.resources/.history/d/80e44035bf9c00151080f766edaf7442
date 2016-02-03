@@ -1,0 +1,150 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+
+public class StaffLogin extends JPanel implements ActionListener
+{
+	
+	private JFrame f;
+	private JTextField user = new JTextField("username");
+	private JTextField pass = new JTextField("password");
+	private String inUser = "";
+	private String inPass = "";
+	private String realUser = "";
+	private String realPass = "";
+	private JButton go = new JButton("GO");
+	private String userName = System.getProperty("user.name");
+	private String fileName = "C:\\Users\\" + userName + "\\Documents\\eMenu/LoginInfo.txt";
+	private String pathName = "C:\\Users\\" + userName + "\\Documents\\eMenu/";
+	private File file = new File(fileName);
+	private File path = new File(pathName);
+	private String str = "";
+	private boolean loggedIn;
+	public int window = 0;
+	
+	
+	public StaffLogin()
+	{
+		f = new JFrame("Staff Login");
+		f.setVisible(true);
+		f.setSize(400, 225);
+		f.setDefaultCloseOperation(closeOp());
+		JPanel p = new JPanel();
+		p.setBackground(Main.bGroundColor);
+		
+		FlowLayout flay = new FlowLayout();
+		p.setLayout(flay);
+		
+		user.setColumns(30);
+		pass.setColumns(30);
+		
+		p.add(user);
+		p.add(pass);
+		p.add(go);
+		
+		go.addActionListener(this);
+		f.add(p);
+	}
+
+	
+	public void newPass()
+	{
+		try
+		{
+			PrintWriter makePass = new PrintWriter(file);
+			makePass.println(inUser + "; " + inPass);			
+			makePass.close();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void getPass() throws Exception
+	{
+		String line = "";
+		if(file.exists())
+		{
+			@SuppressWarnings("resource")
+			Scanner reader = new Scanner(file);
+			line = reader.nextLine();
+			String[] part = line.split("; ");
+			realUser = part[0];
+			realPass = part[1];
+		}
+	}
+	
+	public boolean getLoggedIn()
+	{
+		return loggedIn;
+	}
+	
+	public int closeOp()
+	{
+		new LoginMenu();
+		f.dispose();
+		return 0;
+	}
+	
+	public void actionPerformed(ActionEvent b)
+	{
+		if(b.getSource() == go)
+		{
+			inUser = user.getText();
+			inPass = pass.getText();
+			if(!file.exists())
+			{
+				path.mkdirs();
+				newPass();
+				JOptionPane.showMessageDialog(f, "Username and Password successfully created");
+				loggedIn = true;
+			}
+			else
+			{
+				try
+				{
+					getPass();
+				}
+				catch (Exception e)
+				{
+					JOptionPane.showMessageDialog(f, "File not Found");
+				}
+				if(inUser.equals(realUser) && inPass.equals(realPass))
+				{
+					JOptionPane.showMessageDialog(f, "Thank you! Now logging in...");
+					try
+					{
+						Main.readFile();
+					}
+					catch (IOException e)
+					{
+						System.out.println("File not found");
+					}
+					loggedIn = true;
+				}
+				else
+				{
+					loggedIn = false;
+				}
+
+			}
+			if(getLoggedIn())
+			{
+				new StaffMenu();
+				f.dispose();
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(f, "Wrong Username/Password, try putting: " + realUser + "; " + realPass);
+			}
+				
+		}
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,8 @@
+
+public class EditPane
+{
+	public EditPane(Item i)
+	{
+		
+	}
+}

@@ -1,0 +1,59 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+
+public class Overview extends JPanel
+{
+
+	private JPanel p;
+	private JPanel grid;
+	private JLabel image_label;
+	private String selected_name;
+	private JLabel name_label;
+	
+	public Overview()
+	{
+		try
+		{
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		if(!Main.People.isEmpty())
+			 name_label = new JLabel(Main.People.get(0).getName());
+		else
+			name_label = new JLabel();
+		
+		BorderLayout blay = new BorderLayout();
+		p = new JPanel();
+		p.setLayout(blay);
+		
+		
+		image_label = new JLabel();
+		image_label.setText("");
+		ImageIcon image = new ImageIcon(Main.path_name + Main.People.get(0).getImage());
+		Image image2 = image.getImage();
+		ImageIcon image3 = new ImageIcon(image2.getScaledInstance(200, 300, UNDEFINED_CONDITION));
+		
+		if(!Main.People.isEmpty())
+			image_label.setIcon(image3);
+		image_label.setPreferredSize(new Dimension(200, 400));
+		
+		
+		name_label = new JLabel(selected_name);
+		
+		p.add(image_label, BorderLayout.EAST);
+		p.add(name_label, BorderLayout.NORTH);
+		p.setBackground(Main.bkgr_color);
+		
+
+		add(p);
+	}
+	
+
+	
+}

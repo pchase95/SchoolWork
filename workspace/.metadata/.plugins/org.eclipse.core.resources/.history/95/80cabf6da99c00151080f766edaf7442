@@ -1,0 +1,47 @@
+import java.awt.Color;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+
+public class Main
+{
+	public static Color bGroundColor = new Color(218, 251, 255);
+	public static ArrayList<Item> items = new ArrayList<Item>();
+	public static String userName = System.getProperty("user.name");
+	public static String fileName = "C:\\Users\\" + userName + "\\Documents\\eMenu/Entries.txt";
+	public static File file = new File(fileName);
+	private static Item item;
+	private static int itemQuant;
+	
+	public static void main(String[] args)
+	{
+		new LoginMenu();
+		
+	}
+	
+	
+
+	public static void readFile() throws IOException
+	{
+		String line = "";
+		if(file.exists())
+		{
+			@SuppressWarnings("resource")
+			Scanner reader = new Scanner(file);
+			while(reader.hasNextLine())
+			{
+				line = reader.nextLine();
+				String[] part = line.split("; ");
+				item.setName(part[0]);
+				item.setDesc(part[1]);
+				item = new Item(item.getName(), item.getDesc());
+				items.add(item);
+				
+			}
+		}
+	}
+		
+
+}

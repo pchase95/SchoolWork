@@ -1,0 +1,21 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class ItemCart extends JPanel implements ActionListener
+{
+	private JFrame f;
+	
+	public ItemCart()
+	{
+		f.setSize(1200, 800);
+		f.setVisible(true);
+	}
+	
+	
+	
+	public void actionPerformed(ActionEvent h)
+	{
+		
+	}
+}
