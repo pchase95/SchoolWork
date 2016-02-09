@@ -1,9 +1,0 @@
-
-public class Shreck
-{
-	public static void main(String[] args)
-	{
-		System.out.println("Shreck is love shreck is life");
-	}
-
-}
