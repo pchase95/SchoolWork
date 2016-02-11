@@ -88,18 +88,18 @@ public class Main
 	{
 		File folder = new File(getDir().toString());
 		File[] contents = folder.listFiles();
-
-		    for(int i = 0; i < contents.length; i++)
-		    {
-		      if(contents[i].isFile())
-		      {
-		        System.out.println("(f) " + contents[i].getName());
-		      }
-		      else if (contents[i].isDirectory())
-		      {
-		        System.out.println("(d) " + contents[i].getName());
-		      }
-		    }		
+	
+		for(int i = 0; i < contents.length; i++)
+		{
+			if(contents[i].isFile())
+			{
+				System.out.println("(f) " + contents[i].getName());
+			}
+			else if (contents[i].isDirectory())
+			{
+				System.out.println("(d) " + contents[i].getName());
+			}
+		}		
 	}
 	
 	private void printDir()
