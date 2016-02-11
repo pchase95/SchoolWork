@@ -86,8 +86,8 @@ public class Main
 	
 	private void listDir() throws Exception
 	{
-		File folder = new File(getDir().toString());
-		File[] contents = folder.listFiles();
+		File dir = new File(getDir().toString());
+		File[] contents = dir.listFiles();
 	
 		for(int i = 0; i < contents.length; i++)
 		{
@@ -110,7 +110,7 @@ public class Main
 	private void printHelp()
 	{
 		System.out.println("(l): lists contents of current directory");
-		System.out.println("(d): [dir]: moves into the specified child directory");
+		System.out.println("(d) [dir]: moves into the specified child directory");
 		System.out.println("(u): moves to the parent directory");
 		System.out.println("(w): prints the current directory");
 		System.out.println("(e): exits the shell");
