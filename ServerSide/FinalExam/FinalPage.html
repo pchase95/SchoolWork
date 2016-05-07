@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet' type='text/css' href='FinalPage.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+
+  	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+    <script src='FinalPage.js'></script>
+
+    <title>Search Films</title>
+  </head>
+
+  <body>
+    <div id='intro' class='jumbotron'>
+      <h1>Search Films!</h1>
+    </div>
+
+    <div id='category'>
+      <p><b>Categories:</b></p>
+      <div class='row'>
+          <button id='action' type='button' class='btn btn-primary col-md-2'>Action</button>
+          <button id='animation' type='button' class='btn btn-primary col-md-2'>Animation</button>
+          <button id='children' type='button' class='btn btn-primary col-md-2'>Children</button>
+      </div>
+          <div class='row'>
+          <button id='classics' type='button' class='btn btn-primary col-md-2'>Classics</button>
+          <button id='comedy' type='button' class='btn btn-primary col-md-2'>Comedy</button>
+          <button id='documentary' type='button' class='btn btn-primary col-md-2'>Documentary</button>
+      </div>
+          <div class='row'>
+          <button id='foreign' type='button' class='btn btn-primary col-md-2'>Foreign</button>
+          <button id='games' type='button' class='btn btn-primary col-md-2'>Games</button>
+          <button id='horror' type='button' class='btn btn-primary col-md-2'>Horror</button>
+      </div>
+    </div>
+    <div id='results'>
+      <div class='row'>
+        <button id='show5' type='button' class='btn btn-default col-md-2'>Show 5</button>
+        <button id='show10' type='button' class='btn btn-default col-md-2'>Show 10</button>
+        <button id='show15' type='button' class='btn btn-default col-md-2'>Show 15</button>
+      </div>
+      <p id='genre'></p>
+      <ol id='list'></ol>
+    </div>
+  </body>
+</html>

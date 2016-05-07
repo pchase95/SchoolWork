@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet' type='text/css' href='Weather.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+
+  	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+    <script src='Weather.js'></script>
+
+    <title>Weather Assignment</title>
+  </head>
+
+
+  <body>
+    <div id='intro' class='jumbotron'>
+      <h1 class='text-center'>Petey's Weather</h1>
+    </div>
+    <div id='controls'>
+      <form role='form'>
+        <div class='form-group' style='font-size:20px'>
+          <label for='info_input'>Zip Code or 'City, State'</label>
+          <input type='text' class='form-control' id='info_input' placeholder='Enter Zip Code or &#39;City, State&#39;'>
+          <button type='button' id='get_forecast' class='btn btn-Secondary'
+          style='margin-top:10px'>Get Forecast</button>
+        </div>
+      </form>
+    </div>
+    <div id='results'></div>
+  </body>
+</html>
